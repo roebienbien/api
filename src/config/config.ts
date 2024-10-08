@@ -21,9 +21,16 @@ const DATABASE = {
   },
 };
 
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN;
+
+const CLIENT = {
+  origin: CLIENT_ORIGIN,
+};
+
 const config = {
   server: SERVER,
   database: DATABASE,
+  client: CLIENT,
 };
 
 export default config;

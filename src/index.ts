@@ -3,8 +3,14 @@ import express from 'express';
 import config from './config/config';
 import router from './routes/routes';
 import connectToDb from './utils/connect-to-db';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 const app = express();
+
+app.use(cookieParser());
+app.use(express.json());
+app.use(cors({ credentials: true, origin: config.client.origin }));
 
 app.use(router);
 
