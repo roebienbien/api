@@ -27,10 +27,19 @@ const CLIENT = {
   origin: CLIENT_ORIGIN,
 };
 
+const PRIVATE_KEY = process.env.PRIVATE_KEY ?? 'privatekey undefined';
+const PUBLIC_KEY = process.env.PUBLIC_KEY ?? 'publicKey undefined';
+
+const SECRET = {
+  privateKey: PRIVATE_KEY,
+  publicKey: PUBLIC_KEY,
+};
+
 const config = {
   server: SERVER,
   database: DATABASE,
   client: CLIENT,
+  secret: SECRET,
 };
 
 export default config;

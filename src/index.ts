@@ -5,16 +5,21 @@ import router from './routes/routes';
 import connectToDb from './utils/connect-to-db';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import deserializeUser from './middleware/deserializeUser';
 
 const app = express();
 
-app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(cors({ credentials: true, origin: config.client.origin }));
 
+app.use(deserializeUser);
 app.use(router);
 
-connectToDb();
+// connectToDb();
+// console.log(config.secret.privateKey);
+// console.log(config.client.origin);
 
 const httpServer = http.createServer(app);
 httpServer.listen(config.server.port, (err?: Error) => {
